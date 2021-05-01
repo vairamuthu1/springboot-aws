@@ -1,12 +1,14 @@
+version: 0.2
+
 phases:
-  build:
-   commands:
-	 - echo Entered the build phases
-	 - mvn clean package
-  post_build:
-	commands:
-	 - echo build completed successfully
+build:
+  commands:
+    - echo Building...
+    - mvn clean package
+post_build:
+    commands:
+      - echo Build completed on successfully `date` 
 artifacts:
-	files:
-	  - target/springbootdemo-0.0.1-SNAPSHOT.jar
-	discard-paths: yes
+  files:
+    - target/springbootdemo-0.0.1-SNAPSHOT.jar
+discard-paths: yes
