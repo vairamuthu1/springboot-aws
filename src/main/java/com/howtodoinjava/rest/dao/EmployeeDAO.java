@@ -5,6 +5,8 @@ import org.springframework.stereotype.Repository;
 import com.howtodoinjava.rest.model.Employee;
 import com.howtodoinjava.rest.model.Employees;
 
+import java.util.stream.Collectors;
+
 @Repository
 public class EmployeeDAO 
 {
@@ -20,6 +22,12 @@ public class EmployeeDAO
     public Employees getAllEmployees() 
     {
         return list;
+    }
+
+    public Employee getEmployeeById(int id)
+    {
+        Employee employee = list.getEmployeeList().stream().filter(a -> a.getId() == id).collect(Collectors.toList()).get(0);
+        return employee;
     }
     
     public void addEmployee(Employee employee) {
